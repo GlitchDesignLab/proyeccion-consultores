@@ -6,13 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "start": "serve -s dist -l 8080 --single"
+    "astro": "astro"
   },
   "dependencies": {
     "astro": "^5.0.2"
-  },
-  "devDependencies": {
-    "serve": "^14.2.4"
   }
 }
