@@ -1,22 +1,24 @@
 ---
+import MainButton from '../components/buttons/MainButton.astro'
+import { Image } from 'astro:assets';
+import SocialArrow from "../assets/icons/social_media_arrow.svg"
+import circleImage from "../assets/images/desktop/banner_circle_desktop.png"
 ---
 
 <section>
     <div class="wrapper">
-            <div class ="banner-text">
-                <h1>CONSULTORÍA POLÍTICA <span>DATOS, ESTRATEGIA, ACCIÓN</span></h1>
-                <span class="line"></span>
+        <div class ="banner-text">
+            <h1>CONSULTORÍA POLÍTICA <span>DATOS, ESTRATEGIA, ACCIÓN</span></h1>
+            <span class="line"></span>
             <p>Acompañamos a instituciones, organizaciones y personas, en la comprensión de sus entornos que les permitan alcanzar sus metas.</p>
-            <a href="#">Saber más</a>
+            <MainButton link="#" target="blank">Saber más</MainButton>
         </div>
-        <div class="social-media">
-            <svg class="social-media-arrow" width="32" height="30" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M31.4107 26.1437C31.4419 26.5905 31.2946 27.0314 31.001 27.3697C30.7074 27.7079 30.2915 27.9158 29.8448 27.9476L10.7706 29.2949C10.5449 29.3189 10.3167 29.2971 10.0996 29.231C9.88245 29.1648 9.68087 29.0556 9.50688 28.9099C9.33288 28.7642 9.19001 28.5849 9.08681 28.3827C8.9836 28.1806 8.92218 27.9597 8.90618 27.7333C8.89019 27.5069 8.91997 27.2796 8.99373 27.0649C9.06749 26.8503 9.18373 26.6527 9.33552 26.4839C9.48731 26.3152 9.67153 26.1787 9.87719 26.0827C10.0829 25.9867 10.3058 25.9331 10.5326 25.9251L25.5376 24.8653L1.38923 3.90321C1.05072 3.60937 0.842805 3.19308 0.811223 2.74595C0.779639 2.29881 0.926974 1.85744 1.22082 1.51893C1.51466 1.18043 1.93093 0.972513 2.37807 0.940931C2.82521 0.909346 3.26658 1.05668 3.60509 1.35052L27.7535 22.3126L26.6936 7.30756C26.6696 7.08186 26.6914 6.85364 26.7575 6.63652C26.8237 6.4194 26.9329 6.21783 27.0786 6.04383C27.2243 5.86983 27.4036 5.72697 27.6058 5.62376C27.8079 5.52056 28.0288 5.45913 28.2552 5.44314C28.4816 5.42715 28.7089 5.45692 28.9236 5.53068C29.1382 5.60445 29.3358 5.72069 29.5046 5.87247C29.6733 6.02426 29.8098 6.20848 29.9058 6.41415C30.0018 6.61981 30.0554 6.84271 30.0634 7.06954L31.4107 26.1437Z" fill="white"/>
-</svg>
 
+        <div class="social-media">
+            <Image class="social-media-arrow" src={SocialArrow} alt="social media arrow icon" />
             <p>REDES SOCIALES</p>
             <div class="social-media-icons">
-                <a href="#">                  
+                <a href="#" target="blank">                  
                     <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M15.2135 28.6483C15.2135 22.4551 15.2135 19.3571 17.1373 17.4333C19.0611 15.5095 22.1577 15.5095 28.3523 15.5095C34.5456 15.5095 37.6436 15.5095 39.5674 17.4333C41.4912 19.3571 41.4912 22.4537 41.4912 28.6483C41.4912 34.8415 41.4912 37.9395 39.5674 39.8634C37.6436 41.7872 34.5469 41.7872 28.3523 41.7872C22.1591 41.7872 19.0611 41.7872 17.1373 39.8634C15.2135 37.9395 15.2135 34.8429 15.2135 28.6483Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M35.97 21.0416H35.9562M34.5759 28.6483C34.5759 30.2989 33.9202 31.8819 32.7531 33.0491C31.5859 34.2162 30.0029 34.8719 28.3523 34.8719C26.7016 34.8719 25.1186 34.2162 23.9515 33.0491C22.7843 31.8819 22.1286 30.2989 22.1286 28.6483C22.1286 26.9976 22.7843 25.4146 23.9515 24.2475C25.1186 23.0803 26.7016 22.4246 28.3523 22.4246C30.0029 22.4246 31.5859 23.0803 32.7531 24.2475C33.9202 25.4146 34.5759 26.9976 34.5759 28.6483Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -24,14 +26,14 @@
 </svg>
 
                 </a>
-                <a href="#">
+                <a href="#" target="blank">
                     <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M15.3615 39.7127C17.8025 41.1247 20.6364 41.7872 23.6597 41.7872C32.6218 41.7872 39.927 34.6826 40.2451 25.7965L43.0222 20.3501L38.3835 21.0417C37.3728 20.1503 36.0715 19.6585 34.724 19.6586C31.1668 19.6586 28.5003 23.1397 29.3578 26.5462C24.4452 26.8643 19.9932 23.8368 17.418 19.8038C15.7086 25.6085 17.2936 32.5983 21.5851 36.9065C21.5851 38.5329 17.436 39.5038 15.3615 39.7127Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M56.8525 28.6483C56.8525 21.3932 54.0712 14.4142 49.0812 9.14771C44.0912 3.88123 37.2722 0.728052 30.0276 0.337195C22.7831 -0.0536624 15.6644 2.34755 10.1367 7.04657C4.60908 11.7456 1.09311 18.3849 0.312527 25.5978C-0.468052 32.8108 1.54616 40.0485 5.94057 45.8213C10.335 51.5941 16.7752 55.4626 23.9356 56.6307C31.096 57.7987 38.4318 56.1773 44.4329 52.1003C50.4341 48.0233 54.644 41.8008 56.196 34.7138L55.2385 34.504C53.7401 41.3461 49.6757 47.3534 43.8821 51.2895C38.0884 55.2256 31.0063 56.7909 24.0934 55.6632C17.1806 54.5356 10.963 50.8008 6.72054 45.2276C2.47806 39.6544 0.533487 32.6669 1.28708 25.7033C2.04067 18.7397 5.43508 12.33 10.7716 7.79342C16.1082 3.25686 22.9808 0.938669 29.9748 1.31601C36.9689 1.69336 43.5522 4.73752 48.3697 9.82192C53.1871 14.9063 55.8722 21.644 55.8722 28.6483H56.8525Z" fill="white"/>
 </svg>
 
                 </a>
-                <a href="#">
+                <a href="#" target="blank">
                     <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M36.2541 14.1264H32.1049C30.2709 14.1264 28.512 14.855 27.2152 16.1518C25.9183 17.4487 25.1898 19.2076 25.1898 21.0416V25.1907H21.0406V30.7228H25.1898V41.7871H30.7219V30.7228H34.871L36.2541 25.1907H30.7219V21.0416C30.7219 20.6748 30.8676 20.323 31.127 20.0636C31.3864 19.8043 31.7381 19.6586 32.1049 19.6586H36.2541V14.1264Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M56.9994 28.6483C56.9994 21.3932 54.2182 14.4142 49.2282 9.14771C44.2382 3.88123 37.4191 0.728052 30.1746 0.337195C22.9301 -0.0536624 15.8114 2.34755 10.2837 7.04657C4.75605 11.7456 1.24008 18.3849 0.4595 25.5978C-0.321079 32.8108 1.69313 40.0485 6.08754 45.8213C10.4819 51.5941 16.9222 55.4626 24.0826 56.6307C31.243 57.7987 38.5787 56.1773 44.5799 52.1003C50.581 48.0233 54.7909 41.8008 56.343 34.7138L55.3855 34.504C53.887 41.3461 49.8227 47.3534 44.029 51.2895C38.2354 55.2256 31.1533 56.7909 24.2404 55.6632C17.3275 54.5356 11.11 50.8008 6.86751 45.2276C2.62503 39.6544 0.68046 32.6669 1.43405 25.7033C2.18764 18.7397 5.58205 12.33 10.9186 7.79342C16.2551 3.25686 23.1278 0.938669 30.1218 1.31601C37.1159 1.69336 43.6992 4.73752 48.5166 9.82192C53.3341 14.9063 56.0192 21.644 56.0192 28.6483H56.9994Z" fill="white"/>
@@ -40,9 +42,10 @@
                 </a>
             </div>
         </div>
+
         <div class="banner-circle">
             <div class="circle-wrapper">
-                <img src="src/assets/images/desktop/banner_circle_desktop.png" alt="circle">
+                <Image src={circleImage} alt="circle image" />
                 <p>Consultá, comprendé <span>proyectá</span></p>
             </div>
         </div>
@@ -93,15 +96,7 @@
     .banner-text p{
         max-width: 400px;
         line-height: 1.8rem;
-    }
-    .banner-text a{
-        background-color: var(--blue);
-        font-size: 1.125rem;
-        padding: 1rem 4rem; 
-        color: var(--white);
-        text-transform: uppercase;    
-        text-decoration: none; 
-        font-weight: 600;  
+        color: var(--gray);
     }
     .social-media{
         z-index: 1;
@@ -117,10 +112,18 @@
     .social-media p{
         font-size: 1.125rem;
         letter-spacing: 0.22rem;
+        text-transform: uppercase;
+        color: var(--blue);
     }
     .social-media-icons{
         display: flex;
         gap: 1rem;
+    }
+    .social-media-icons a svg{
+        transition: all 0.45s ease-in-out;
+    }
+    .social-media-icons a:hover svg, .social-media-icons a:hover svg path{
+        stroke: var(--blue);
     }
     .banner-circle{
         position: absolute;

@@ -1,9 +1,50 @@
 ---
+import { Image } from 'astro:assets';
+import Logo from '../assets/logo_nav.svg';
 ---
 <header>
     <nav>
+        <a href="#">
+            <Image src={Logo} alt="Logo" />
+        </a>
         <ul>
-            <li><a href="/">Home</a></li>
+            <li><a href="#">¿Quiénes somos?</a></li>
+            <li><a href="#">¿Qué hacemos?</a></li>
+            <li><a href="#">Nuestro compromiso</a></li>
+            <li><a href="#">Medios</a></li>
         </ul>
     </nav>
 </header>
+
+<style>
+    header{
+        width: 100%;
+        position: absolute;
+        z-index: 2;
+        top: 0;
+    }
+    header nav{
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1440px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 1rem;
+    }
+    header nav ul{
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+    }
+    header nav ul li a{
+        text-decoration: none;
+        color: var(--gray);
+        cursor: pointer;
+        font-size: 1.125rem;
+        transition: all .45s ease-in-out;
+    }
+    header nav ul li a:hover{
+        color: var(--blue);
+    }
+</style>

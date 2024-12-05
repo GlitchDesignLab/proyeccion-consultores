@@ -1,0 +1,23 @@
+---
+const {link, target} = Astro.props
+---
+
+<a href={link} target={target}>
+    <slot />
+</a>
+
+<style>
+    a{
+        background-color: var(--blue);
+        font-size: 1.125rem;
+        padding: 1rem 4rem; 
+        color: var(--white);
+        text-transform: uppercase;    
+        text-decoration: none; 
+        font-weight: 600; 
+        box-shadow: -4px 4px 16px rgba(0, 0, 0, .25);
+    }
+    a:hover{
+        box-shadow: -4px 4px 20px rgba(88, 88, 88, 0.5);
+    }
+</style>
