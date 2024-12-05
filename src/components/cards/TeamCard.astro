@@ -1,0 +1,66 @@
+---
+const { name, position, image, description } = Astro.props;
+import { Image } from "astro:assets";
+---
+
+<article>
+  <div class="team-card-text">
+    <header>
+      <h3>{name}</h3>
+      <span>{position}</span>
+    </header>
+    <p>{description}</p>
+  </div>
+  <Image src={image} alt={`image of ${name}`} />
+</article>
+
+<style>
+  article {
+    position: relative;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    height: 680px;
+    width: 400px;
+    overflow: hidden;
+    transition: all 0.45s ease-in-out;
+  }
+  .team-card-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 1;
+  }
+  .team-card-text h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .team-card-text p,
+  .team-card-text span {
+    color: var(--gray);
+  }
+  .team-card-text span {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+  }
+  .team-card-text p {
+    margin-top: 1rem;
+    line-height: 1.4;
+    font-size: 1rem;
+  }
+  article img {
+    width: 100%;
+    object-fit: contain;
+    filter: grayscale(1);
+    transition: all 0.45s ease-in-out;
+  }
+  article:hover {
+    border-bottom: 2px solid var(--blue);
+  }
+  article:hover img {
+    filter: grayscale(0);
+  }
+</style>

@@ -4,89 +4,88 @@ import Navbar from "../components/Navbar.astro";
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<Navbar />
-		<main>
-			<slot />
-		</main>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Proyección Consultores</title>
+  </head>
+  <body>
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+  </body>
 </html>
 
 <style is:global>
-	@font-face {
-		font-family: 'Metropolis';
-		src: url('/fonts/Metropolis-Bold.ttf') format('truetype');
-		font-weight: 700;
-		font-style: normal;
-		font-display: swap;
-	}
-	@font-face {
-		font-family: 'Metropolis';
-		src: url('/fonts/Metropolis-Bold.ttf') format('truetype');
-		font-weight: 700;
-		font-style: normal;
-		font-display: swap;
-	}
-	@font-face {
-		font-family: 'Metropolis';
-		src: url('/fonts/Metropolis-SemiBold.ttf') format('truetype');
-		font-weight: 600;
-		font-style: normal;
-		font-display: swap;
-	}
-	@font-face {
-		font-family: 'Metropolis';
-		src: url('/fonts/Metropolis-Regular.ttf') format('truetype');
-		font-weight: 400;
-		font-style: normal;
-		font-display: swap;
-	}
-	@font-face {
-		font-family: 'Metropolis';
-		src: url('/fonts/Metropolis-Light.otf') format('truetype');
-		font-weight: 300;
-		font-style: normal;
-		font-display: swap;
-	}
-	@font-face {
-		font-family: 'Metropolis';
-		src: url('/fonts/Metropolis-ExtraLight.otf') format('truetype');
-		font-weight: 100;
-		font-style: normal;
-		font-display: swap;
-	}
-	:root{
-		--black: #1A1A1A;
-		--white: #ffffff;
-		--blue: #008FC5;
-		--gray: #D9D9D9;
+  @font-face {
+    font-family: "Metropolis";
+    src: url("/fonts/Metropolis-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Metropolis";
+    src: url("/fonts/Metropolis-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Metropolis";
+    src: url("/fonts/Metropolis-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Metropolis";
+    src: url("/fonts/Metropolis-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Metropolis";
+    src: url("/fonts/Metropolis-Light.otf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Metropolis";
+    src: url("/fonts/Metropolis-ExtraLight.otf") format("truetype");
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+  }
+  :root {
+    --black: #1a1a1a;
+    --white: #ffffff;
+    --blue: #008fc5;
+    --gray: #d9d9d9;
 
-		scroll-behavior: smooth;
-	}
-	*{
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;	
-	}
-	body{
-		background-color: var(--black);
-		color: var(--white);
-		font-family: 'Metropolis', sans-serif;
-		font-size: 1rem;
-		font-weight: 400;
-
-	}
-	body * {
-		transition: all 0.5s ease;
-	}
-	section[id]{
-		scroll-margin-top: 100px;
-	}
+    scroll-behavior: smooth;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background-color: var(--black);
+    color: var(--white);
+    font-family: "Metropolis", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  body * {
+    transition: all 0.5s ease;
+  }
+  section[id] {
+    scroll-margin-top: 100px;
+  }
 </style>

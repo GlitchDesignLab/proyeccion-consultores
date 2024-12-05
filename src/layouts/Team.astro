@@ -1,0 +1,66 @@
+---
+import TeamCard from "../components/cards/TeamCard.astro";
+import zuninoImage from "../assets/images/zunino_example.png";
+const team = [
+  {
+    name: "Manuel zunino",
+    position: "Director Asociado",
+    image: zuninoImage,
+    description:
+      "Sociologo, docente, investigador, integrante del observatorio social (UNLaM) y miembro de ASACOP",
+  },
+  {
+    name: "Manuel zunino",
+    position: "Director Asociado",
+    image: zuninoImage,
+    description:
+      "Sociologo, docente, investigador, integrante del observatorio social (UNLaM) y miembro de ASACOP",
+  },
+  {
+    name: "Manuel zunino",
+    position: "Director Asociado",
+    image: zuninoImage,
+    description:
+      "Sociologo, docente, investigador, integrante del observatorio social (UNLaM) y miembro de ASACOP",
+  },
+];
+---
+
+<section id="integrantes">
+  <h3 class="visually-hidden">
+    Conoce a Nuestro Equipo de Expertos - Proyección Consultores
+  </h3>
+  <div class="team-cards">
+    {
+      team.map(({ name, position, description, image }) => (
+        <TeamCard
+          name={name}
+          position={position}
+          description={description}
+          image={image}
+        />
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  section {
+    padding: 12rem 0;
+  }
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+  .team-cards {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+  }
+</style>
