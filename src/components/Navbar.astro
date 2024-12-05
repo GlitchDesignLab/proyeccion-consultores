@@ -36,6 +36,7 @@ import Logo from '../assets/logo_nav.svg';
         display: flex;
         gap: 2rem;
         list-style: none;
+        display: none;
     }
     header nav ul li a{
         text-decoration: none;
@@ -46,5 +47,10 @@ import Logo from '../assets/logo_nav.svg';
     }
     header nav ul li a:hover{
         color: var(--blue);
+    }
+    @media screen and (min-width: 1024px){
+        ul {
+            display: flex;
+        }
     }
 </style>
