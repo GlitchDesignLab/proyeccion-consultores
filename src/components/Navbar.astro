@@ -1,180 +1,184 @@
 ---
-import { Image } from 'astro:assets';
-import Logo from '../assets/logo_nav.svg';
+import { Image } from "astro:assets";
+import Logo from "../assets/logo_nav.svg";
 ---
+
 <header>
-    <nav>
-        <a href="#">
-            <Image src={Logo} alt="Logo" />
-        </a>
-        <button class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </button>
-        <ul class="nav-menu">
-            <li><a href="#banner">Inicio</a></li>
-            <li><a href="#who-we-are">¿Quiénes somos?</a></li>
-            <li><a href="#">¿Qué hacemos?</a></li>
-            <li><a href="#">Nuestro compromiso</a></li>
-            <li><a href="#">Medios</a></li>
-        </ul>
-    </nav>
+  <nav>
+    <a href="#">
+      <Image src={Logo} alt="Logo" />
+    </a>
+    <button class="hamburger">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="#banner">Inicio</a></li>
+      <li><a href="#who-we-are">¿Quiénes somos?</a></li>
+      <li><a href="#">¿Qué hacemos?</a></li>
+      <li><a href="#">Nuestro compromiso</a></li>
+      <li><a href="#">Medios</a></li>
+    </ul>
+  </nav>
 </header>
 
 <script>
-    const header = document.querySelector("header");
-    const sections = document.querySelectorAll("section");
-    const menu = document.querySelector(".nav-menu");
-    const navLinks = document.querySelectorAll(".nav-menu a");
-    const hamburger = document.querySelector(".hamburger");
+  const header = document.querySelector("header");
+  const sections = document.querySelectorAll("section");
+  const menu = document.querySelector(".nav-menu");
+  const navLinks = document.querySelectorAll(".nav-menu a");
+  const hamburger = document.querySelector(".hamburger");
 
-    // scroll nav event
-    window.addEventListener("scroll", () => {
-        if (header) {
-            if (window.scrollY > 50) {
-                header.classList.add("scrolled");
-            } else {
-                header.classList.remove("scrolled");
-            }
-        }
-    });
+  // scroll nav event
+  window.addEventListener("scroll", () => {
+    if (header) {
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    }
+  });
 
-    // scroll event links
-    function updateActiveLink() {
+  const idList = ["who-we-are", "whatWeDo", "media", "banner"];
+  // scroll event links
+  function updateActiveLink() {
     sections.forEach((section, index) => {
+      const sectionId = section.getAttribute("id");
+      if (sectionId && idList.includes(sectionId)) {
         const rect = section.getBoundingClientRect();
         if (rect.top >= 0 && rect.top <= window.innerHeight / 2) {
-        navLinks.forEach(link => link.classList.remove("active"));
-        navLinks[index].classList.add("active");
+          navLinks.forEach((link) => link.classList.remove("active"));
+          navLinks[index].classList.add("active");
         }
+      }
     });
-    }
-    window.addEventListener("scroll", updateActiveLink);
-    updateActiveLink();
+  }
+  window.addEventListener("scroll", updateActiveLink);
+  updateActiveLink();
 
-    // responsive menu
-    if (hamburger) {        
-        hamburger.addEventListener("click", () => {
-            if (menu) {   
-                menu.classList.toggle("show");
-                hamburger.classList.toggle("active");
-            }
-        })
-    }
-    navLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            if (menu && hamburger) {   
-                menu.classList.remove("show");
-                hamburger.classList.remove("active");
-            }
-        });
+  // responsive menu
+  if (hamburger) {
+    hamburger.addEventListener("click", () => {
+      if (menu) {
+        menu.classList.toggle("show");
+        hamburger.classList.toggle("active");
+      }
     });
+  }
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (menu && hamburger) {
+        menu.classList.remove("show");
+        hamburger.classList.remove("active");
+      }
+    });
+  });
 </script>
 
 <style>
-    header{
-        width: 100%;
-        position: sticky;
-        z-index: 3;
-        top: 0;
-        background-color: transparent;
-    }
-    header.scrolled{
-        background-color: var(--blue);
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    header nav{
-        margin: 0 auto;
-        width: 100%;
-        max-width: 1440px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 2rem 1rem;
-    }
-    header nav ul{
-        list-style: none;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 600px;
-        background-color: var(--black);
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-end;
-        padding-bottom: 4rem;
-        gap: 4rem;
-        transform: translateY(-100%);
-        transition: all .45s ease-in-out;
-        z-index: -2;
-    }
-    header nav ul.show{
-        transform: translateY(0);
-    }
-    header nav ul li a{
-        text-decoration: none;
-        color: var(--gray);
-        cursor: pointer;
-        font-size: 1.125rem;
-        transition: all .45s ease-in-out;
-    }
-    header nav ul li a:hover{
-        color: var(--blue);
-    }
-    header nav ul li a.active{
-        color: var(--blue);
-    }
-    .hamburger{
-        cursor: pointer;
-        position: relative;
-        width: 40px;
-        height: 35px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        background-color: transparent;
-        border: none;
-    }
-    .hamburger .bar{
-        width: 100%;
-        height: 3px;
-        background-color: var(--gray);
-        transition: all .45s ease-in-out;
-    }
-    .hamburger:hover .bar{
-        background-color: var(--blue);
-    }
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translateY(8px);
-    }
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-    .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translateY(-8px);
-    }
+  header {
+    width: 100%;
+    position: sticky;
+    z-index: 3;
+    top: 0;
+    background-color: transparent;
+  }
+  header.scrolled {
+    background-color: var(--blue);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  header nav {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1440px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 1rem;
+  }
+  header nav ul {
+    list-style: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 600px;
+    background-color: var(--black);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 4rem;
+    gap: 4rem;
+    transform: translateY(-100%);
+    transition: all 0.45s ease-in-out;
+    z-index: -2;
+  }
+  header nav ul.show {
+    transform: translateY(0);
+  }
+  header nav ul li a {
+    text-decoration: none;
+    color: var(--gray);
+    cursor: pointer;
+    font-size: 1.125rem;
+    transition: all 0.45s ease-in-out;
+  }
+  header nav ul li a:hover {
+    color: var(--blue);
+  }
+  header nav ul li a.active {
+    color: var(--blue);
+  }
+  .hamburger {
+    cursor: pointer;
+    position: relative;
+    width: 40px;
+    height: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+  }
+  .hamburger .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--gray);
+    transition: all 0.45s ease-in-out;
+  }
+  .hamburger:hover .bar {
+    background-color: var(--blue);
+  }
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+  }
 
-    @media screen and (min-width: 1024px){
-        .hamburger{
-            visibility: hidden;
-            opacity: 0;
-        }
-        header nav ul{
-            gap: 2rem;
-            list-style: none;
-            position: relative;
-            transform: translateY(0);
-            flex-direction: row;
-            height: auto;
-            padding: 0;
-            z-index: 1;
-            background-color: transparent;
-        }
+  @media screen and (min-width: 1024px) {
+    .hamburger {
+      visibility: hidden;
+      opacity: 0;
     }
-
+    header nav ul {
+      gap: 2rem;
+      list-style: none;
+      position: relative;
+      transform: translateY(0);
+      flex-direction: row;
+      height: auto;
+      padding: 0;
+      z-index: 1;
+      background-color: transparent;
+    }
+  }
 </style>
