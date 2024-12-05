@@ -7,8 +7,9 @@ import Logo from '../assets/logo_nav.svg';
         <a href="#">
             <Image src={Logo} alt="Logo" />
         </a>
-        <ul>
-            <li><a href="#">¿Quiénes somos?</a></li>
+        <ul class="nav-menu">
+            <li><a href="#banner">Inicio</a></li>
+            <li><a href="#who-we-are">¿Quiénes somos?</a></li>
             <li><a href="#">¿Qué hacemos?</a></li>
             <li><a href="#">Nuestro compromiso</a></li>
             <li><a href="#">Medios</a></li>
@@ -16,12 +17,30 @@ import Logo from '../assets/logo_nav.svg';
     </nav>
 </header>
 
+<script>
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-menu a");
+
+    function updateActiveLink() {
+    sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top >= 0 && rect.top <= window.innerHeight / 2) {
+        navLinks.forEach(link => link.classList.remove("active"));
+        navLinks[index].classList.add("active");
+        }
+    });
+    }
+    window.addEventListener("scroll", updateActiveLink);
+    updateActiveLink();
+</script>
+
 <style>
     header{
         width: 100%;
-        position: absolute;
+        position: sticky;
         z-index: 2;
         top: 0;
+        background-color: var(--black);
     }
     header nav{
         margin: 0 auto;
@@ -45,6 +64,9 @@ import Logo from '../assets/logo_nav.svg';
         transition: all .45s ease-in-out;
     }
     header nav ul li a:hover{
+        color: var(--blue);
+    }
+    header nav ul li a.active{
         color: var(--blue);
     }
     @media screen and (min-width: 1024px){
