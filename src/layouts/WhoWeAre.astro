@@ -1,104 +1,121 @@
 ---
 import { Image } from "astro:assets";
-import WhoWeAreImg from "../assets/images/desktop/who_we_are_desktop.png"
+import WhoWeAreImg from "../assets/images/desktop/who_we_are_desktop.png";
+import Divider from "../components/Divider.astro";
 ---
 
 <section id="who-we-are">
-    <div class="wrapper">
-        <div class="who-we-are-text">
-            <h2>¿Quienes somos?</h2>
-            <div class="who-we-are-description">
-                <p>Somos un equipo interdisciplinario especializados en el <strong>análisis de coyunturas políticas, económicas y sociales.</strong> Obtenemos información combinando técnicas innovadoras que nos permiten <strong>construir datos precisos</strong> y <strong>realizar monitoreos sobre comportamientos, percepciones y opiniones.</strong> Ofrecemos un servicio integral que vincula el <strong>análisis macro y micro</strong> para entender la realidad y anticipar escenarios futuros.</p>
-                
-                <p>Acompañamos a instituciones, organizaciones y personas, en la comprensión de sus entornos, con el fin de <strong>planificar acciones</strong> que les permitan alcanzar sus metas.</p>
-            </div>
-        </div>
-        <Image src={WhoWeAreImg} alt="buenos aires street" />
+  <Divider />
+  <div class="wrapper">
+    <div class="who-we-are-text">
+      <h2>¿Quienes somos?</h2>
+      <div class="who-we-are-description">
+        <p>
+          Somos un equipo interdisciplinario especializados en el <strong
+            >análisis de coyunturas políticas, económicas y sociales.</strong
+          > Obtenemos información combinando técnicas innovadoras que nos permiten
+          <strong>construir datos precisos</strong> y <strong
+            >realizar monitoreos sobre comportamientos, percepciones y
+            opiniones.</strong
+          > Ofrecemos un servicio integral que vincula el <strong
+            >análisis macro y micro</strong
+          > para entender la realidad y anticipar escenarios futuros.
+        </p>
+
+        <p>
+          Acompañamos a instituciones, organizaciones y personas, en la
+          comprensión de sus entornos, con el fin de <strong
+            >planificar acciones</strong
+          > que les permitan alcanzar sus metas.
+        </p>
+      </div>
     </div>
+    <Image src={WhoWeAreImg} alt="buenos aires street" />
+  </div>
 </section>
 
 <style>
-    section{
-        padding: 0 1rem;
-    }
-    .wrapper{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 3rem;
-    }
-    .who-we-are-text{
-        text-align: center;
-    }
-    .who-we-are-text h2{
-        margin: 3rem 0;
-        font-size: 1.375rem;
-        text-transform: uppercase;
-        font-weight: 200;
-        letter-spacing: 0.5rem;
-    }
-    .who-we-are-description{
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        line-height: 1.8;
-    }
-    .who-we-are-description p strong{
-        font-weight: 400;
-    }
-    .wrapper img{
-        width: 100%;
-        max-width: 800px;
-        height: auto;
-    }
-    @media screen and (min-width: 570px) {
-        section{
-            padding: 0 2rem;
-        }
-        .who-we-are-text h2{
-            font-size: 2rem;
-            margin: 6rem 0;
-        }
-        .who-we-are-text p{
-            font-size: 1.125rem;
-            line-height: 2.3;
-        }
-    }
-    @media screen and (min-width: 768px) {
-        section{
-            padding: 0 4rem;
-        }
-    }
-    @media screen and (min-width: 1024px) {
-        section{
-            padding: 0 6rem;
-        }
-    }
-    @media screen and (min-width: 1280px) {
-        .wrapper{
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            gap: 6rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        .who-we-are-text{
-            text-align: left;
-        }
-        .who-we-are-text h2{
-            margin-top: 0;
-        }
-    }
-    @media screen and (min-width: 1440px) {
-        .wrapper{
-            max-width: 1200px;
-        }
-    }
-    @media screen and (min-width: 1680px) {
-        .wrapper{
-            max-width: 1440px;
-        }
-    }
+  section {
+    padding: 0 1rem;
+  }
 
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+  .who-we-are-text {
+    text-align: center;
+  }
+  .who-we-are-text h2 {
+    margin: 3rem 0;
+    font-size: 1.375rem;
+    text-transform: uppercase;
+    font-weight: 200;
+    letter-spacing: 0.5rem;
+  }
+  .who-we-are-description {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    line-height: 1.8;
+  }
+  .who-we-are-description p strong {
+    font-weight: 400;
+  }
+  .wrapper img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+  }
+  @media screen and (min-width: 570px) {
+    section {
+      padding: 0 2rem;
+    }
+    .who-we-are-text h2 {
+      font-size: 2rem;
+      margin: 6rem 0;
+    }
+    .who-we-are-text p {
+      font-size: 1.125rem;
+      line-height: 2.3;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    section {
+      padding: 0 4rem;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    section {
+      padding: 0 6rem;
+    }
+  }
+  @media screen and (min-width: 1280px) {
+    .wrapper {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .who-we-are-text {
+      text-align: left;
+    }
+    .who-we-are-text h2 {
+      margin-top: 0;
+    }
+  }
+  @media screen and (min-width: 1440px) {
+    .wrapper {
+      max-width: 1200px;
+    }
+  }
+  @media screen and (min-width: 1680px) {
+    .wrapper {
+      max-width: 1440px;
+    }
+  }
 </style>

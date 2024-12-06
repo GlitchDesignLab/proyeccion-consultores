@@ -23,13 +23,20 @@ const team = [
     description:
       "Sociologo, docente, investigador, integrante del observatorio social (UNLaM) y miembro de ASACOP",
   },
+  {
+    name: "Manuel zunino",
+    position: "Director Asociado",
+    image: zuninoImage,
+    description:
+      "Sociologo, docente, investigador, integrante del observatorio social (UNLaM) y miembro de ASACOP",
+  },
 ];
 ---
 
 <section id="integrantes">
-  <h3 class="visually-hidden">
+  <h2 class="visually-hidden">
     Conoce a Nuestro Equipo de Expertos - Proyección Consultores
-  </h3>
+  </h2>
   <div class="team-cards">
     {
       team.map(({ name, position, description, image }) => (
@@ -60,7 +67,9 @@ const team = [
   }
   .team-cards {
     display: flex;
-    justify-content: center;
-    gap: 0;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 1440px;
   }
 </style>
