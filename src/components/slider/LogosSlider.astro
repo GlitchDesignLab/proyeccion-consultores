@@ -9,7 +9,7 @@ const { clientes } = Astro.props;
 
   <!-- caja principal -->
   <div class="galleryBox">
-    { clientes.map(({ src, alt, link }) => (
+    { clientes.map(({ src, alt, link } : {src: any, alt: string, link: string}) => (
       <a href={link} target="_blank" rel="noopener noreferrer" class="logo_box">
         <Image src={src} alt={alt} />
       </a>
@@ -18,7 +18,7 @@ const { clientes } = Astro.props;
   </div>
   <!-- caja principal -->
   <div class="galleryBox">
-    { clientes.map(({ src, alt, link }) => (
+    { clientes.map(({ src, alt, link } : {src: any, alt: string, link: string}) => (
       <a href={link} target="_blank" rel="noopener noreferrer" class="logo_box">
         <Image src={src} alt={alt} />
       </a>
