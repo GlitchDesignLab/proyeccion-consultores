@@ -1,0 +1,166 @@
+---
+const { title, category, url, image, description, logo } = Astro.props;
+
+import { Image } from "astro:assets";
+
+// Verifica que los props estén llegando correctamente
+console.log({ title, category, url, image, description, logo });
+---
+
+<li class="card">
+    <div class="img">
+        <Image src={image} alt={`image of ${title}`} draggable="false"/>
+    </div>
+    <div class="card_text_content">
+        <div>
+            {logo ? (
+                <Image src={logo} alt={`logo of ${title}`} draggable="false"/> 
+            ) : (
+                <p class="category">{category}</p>
+            )}
+        </div>
+        <h4 class="limited_title"> 
+            {title}
+        </h4>
+        <p class="description limited_words">
+            {description}
+        </p>
+        <a href={url} target="_blank" rel="noopener noreferrer">
+            saber más <svg xmlns="http://www.w3.org/2000/svg" width="25" height="8" viewBox="0 0 25 8"
+                fill="none">
+                <path
+                    d="M24.3536 4.35355C24.5488 4.15829 24.5488 3.84171 24.3536 3.64644L21.1716 0.464464C20.9763 0.269202 20.6597 0.269202 20.4645 0.464464C20.2692 0.659726 20.2692 0.976309 20.4645 1.17157L23.2929 4L20.4645 6.82843C20.2692 7.02369 20.2692 7.34027 20.4645 7.53553C20.6597 7.73079 20.9763 7.73079 21.1716 7.53553L24.3536 4.35355ZM4.37114e-08 4.5L24 4.5L24 3.5L-4.37114e-08 3.5L4.37114e-08 4.5Z"
+                    fill="#008FC5" />
+            </svg>
+        </a>
+    </div>
+</li>
+
+
+
+<style>
+     .card {
+  scroll-snap-align: start;
+  list-style: none;
+  background: #fff;
+  border-radius: 3px;
+  min-height: 700px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 15px;
+  cursor: pointer;
+}
+ .card .card_text_content {
+  flex: 1;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 30px;
+}
+
+ .card_text_content .category {
+  border-radius: 42px;
+  border: 1px solid #225189;
+  background: #225189;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.32px;
+  color: #fff;
+  text-align: center;
+  width: fit-content;
+  padding: 0 20px;
+  height: 40px;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+ .card .card_text_content h4 {
+  color: #1a1a1a;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%;
+  margin: 0;
+  padding: 0;
+}
+ .card_text_content .description {
+  color: #1a1a1a;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  letter-spacing: 0.36px;
+}
+ .card_text_content a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #008fc5;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: 0.32px;
+  display: flex;
+  align-items: center;
+  width: max-content;
+}
+ .card_text_content a svg {
+  margin-left: 10px;
+  transition: all 0.5s ease;
+}
+ .card_text_content a:hover svg {
+  margin-left: 20px;
+}
+
+ .card .img {
+  width: 100%;
+}
+ .card .img img {
+  width: 100%;
+  vertical-align: middle;
+  object-fit: cover;
+  height: 280px;
+}
+
+ .wrapper .carousel.dragging .card {
+  cursor: grab;
+  user-select: none;
+}
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+    const elements = document.querySelectorAll<HTMLDivElement>('.limited_words');
+
+    elements.forEach(element => {
+        const words = element.innerText.split(' ');
+        const maxWords = 20;  
+
+        if (words.length > maxWords) {
+            element.innerText = words.slice(0, maxWords).join(' ') + '...';
+        }
+    });
+
+
+    const titles = document.querySelectorAll<HTMLDivElement>('.limited_title');
+
+        titles.forEach(element => {
+        const words = element.innerText.split(' ');
+        const maxWords = 15;  
+
+        if (words.length > maxWords) {
+            element.innerText = words.slice(0, maxWords).join(' ') + '...';
+        }
+    });
+});
+
+</script>

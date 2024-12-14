@@ -1,0 +1,113 @@
+---
+import { Image } from "astro:assets";
+const { clientes } = Astro.props;
+---
+
+
+
+<div class="mainBox">
+
+  <!-- caja principal -->
+  <div class="galleryBox">
+    { clientes.map(({ src, alt, link }) => (
+      <a href={link} target="_blank" rel="noopener noreferrer" class="logo_box">
+        <Image src={src} alt={alt} />
+      </a>
+    ))}
+      
+  </div>
+  <!-- caja principal -->
+  <div class="galleryBox">
+    { clientes.map(({ src, alt, link }) => (
+      <a href={link} target="_blank" rel="noopener noreferrer" class="logo_box">
+        <Image src={src} alt={alt} />
+      </a>
+    ))}
+      
+  </div>
+
+</div>
+
+
+<style>
+  .mainBox {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  max-width: 1000px;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+}
+.mainBox:before, .mainBox:after { 
+  position: absolute; 
+  top: 0; 
+  width: 250px; 
+  height: 100%; 
+  content: ""; 
+  z-index: 2; 
+} 
+.mainBox:before { 
+  left: 0; 
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), #1a1a1a); 
+} 
+.mainBox:after { 
+  right: 0; 
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), #1a1a1a); 
+}
+.mainBox:hover .galleryBox {
+  animation-play-state: paused;
+}
+
+.galleryBox {
+  display: flex;
+  animation: translation 10s linear infinite;
+  flex: 0 0 auto;
+}
+.galleryBox .logo_box {
+  width: max-content;
+  margin: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainBox > :nth-child(2) {
+  animation-name: translation;
+  animation-duration: 10s;
+  animation-delay: 0s;
+}
+
+@keyframes translation {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@media screen and (max-width: 1160px) {
+  .mainBox {
+    max-width: 800px;
+  }
+}
+@media screen and (max-width: 950px) {
+  .mainBox {
+    max-width: 600px;
+  }
+}
+@media screen and (max-width: 745px) {
+  .mainBox {
+    max-width: 450px;
+  }
+}
+@media screen and (max-width: 545px) {
+  .mainBox {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}
+</style>
+
+

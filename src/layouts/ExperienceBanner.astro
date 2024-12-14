@@ -1,0 +1,144 @@
+---
+    import { Image } from "astro:assets";
+    import BannerImg from "../assets/images/desktop/exp_banner_proy.png";
+    import BasicSlider from "../components/slider/BasicSlider.astro";
+    import zuninoImage from "../assets/images/zunino_example.png";
+    
+    const estudios = [
+  {
+    title: "Medición sobre calidad de vida en pueblos y ciudades de Argentina",
+    category: "Estudio",
+    image: zuninoImage,
+    description:
+      "Descubre las principales preocupaciones y los retos a los que se enfrentan distintas empresas españolas en el ámbito del marketing digital.",
+      url: "#"
+  },
+  {
+    title: "Medición sobre calidad de vida en pueblos y ciudades de Argentina",
+    category: "Estudio",
+    image: zuninoImage,
+    description:
+      "Descubre las principales preocupaciones y los retos a los que se enfrentan distintas empresas españolas en el ámbito del marketing digital.",
+      url: "#"
+  },
+  {
+    title: "Medición sobre calidad de vida en pueblos y ciudades de Argentina",
+    category: "Estudio",
+    image: zuninoImage,
+    description:
+      "Descubre las principales preocupaciones y los retos a los que se enfrentan distintas empresas españolas en el ámbito del marketing digital.",
+      url: "#"
+  },
+  {
+    title: "Medición sobre calidad de vida en pueblos y ciudades de Argentina",
+    category: "Estudio",
+    image: zuninoImage,
+    description:
+      "Descubre las principales preocupaciones y los retos a los que se enfrentan distintas empresas españolas en el ámbito del marketing digital.",
+      url: "#"
+  },
+  {
+    title: "Medición sobre calidad de vida en pueblos y ciudades de Argentina",
+    category: "Estudio",
+    image: zuninoImage,
+    description:
+      "Descubre las principales preocupaciones y los retos a los que se enfrentan distintas empresas españolas en el ámbito del marketing digital.",
+      url: "#"
+  },
+  {
+    title: "Medición sobre calidad de vida en pueblos y ciudades de Argentina",
+    category: "Estudio",
+    image: zuninoImage,
+    description:
+      "Descubre las principales preocupaciones y los retos a los que se enfrentan distintas empresas españolas en el ámbito del marketing digital.",
+      url: "#"
+  },
+  {
+    title: "Medición sobre calidad de vida en pueblos y ciudades de Argentina",
+    category: "Estudio",
+    image: zuninoImage,
+    description:
+      "Descubre las principales preocupaciones y los retos a los que se enfrentan distintas empresas españolas en el ámbito del marketing digital.",
+      url: "#"
+  },
+ 
+];
+---
+
+
+<section>   
+    <!-- bbanner img -->
+    <div class="banner_container">
+        <Image src={BannerImg} alt="congreso de la nación Argentina, con el logo de Proyección Consultores en el centro" />
+    </div>
+
+    <!-- title and text -->
+    <div class="title_and_text">
+        <h2>
+            NUESTRO COMPROMISO
+            <br>
+            Y EXPERIENCIA
+        </h2>
+        <p>
+            Nos involucramos en nuestro trabajo de manera profesional y personal, entablamos vínculos con nuestros clientes que nos permiten enfrentar sus desafíos en conjunto como si fueran propios. Diseñamos, investigamos y ponemos en práctica estratégias, estando presentes en todo el proceso, sin dejar ningún aspecto librado al azar.
+        </p>
+
+        <!-- carousel -->
+         <BasicSlider list={estudios}></BasicSlider>
+    </div>
+</section>
+
+
+<style>
+    section img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    .title_and_text {
+        margin: 7rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 10px;
+    }
+    .title_and_text h2{
+        color: #FFF;
+        text-align: center;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+        letter-spacing: 10.08px;
+        display: flex;
+        text-align: center;
+        margin-bottom: 5.2rem;
+        text-transform: uppercase;
+    }
+
+    .title_and_text p{
+        color: #FFF;
+        text-align: center;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+        max-width: 737px;
+    }
+
+    @media screen and (max-width: 860px) {
+        .title_and_text {
+            padding: 30px;
+            margin: 3.5rem 0;
+        }
+        .title_and_text h2 {
+            font-size: 32px;
+            margin-bottom: 3rem;
+        }
+
+        .title_and_text p {
+            font-size: 16px;
+        }
+    }
+</style>

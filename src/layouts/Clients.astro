@@ -1,0 +1,81 @@
+---
+    import LogosSlider from "../components/slider/LogosSlider.astro"
+    import cronica from "../assets/icons/clients/cronica.png"
+    import alphaMedia from "../assets/icons/clients/alphaMedia.svg"
+
+    const clientes = [
+        {
+            src: cronica,
+            alt: "cronica",
+            link:"https://www.google.com/"
+        },
+        {
+            src: alphaMedia,
+            alt: "cronica",
+            link:"https://www.google.com/"
+        },
+        {
+            src: cronica,
+            alt: "cronica",
+            link:"https://www.google.com/"
+        },
+        {
+            src: alphaMedia,
+            alt: "cronica",
+            link:"https://www.google.com/"
+        },
+        {
+            src: cronica,
+            alt: "cronica",
+            link:"https://www.google.com/"
+        },
+        {
+            src: alphaMedia,
+            alt: "cronica",
+            link:"https://www.google.com/"
+        },
+    
+    ]
+---
+
+<section class="clients_section">
+    <h2>
+        NUESTROS CLIENTES
+        <br>
+        CONFÍAN EN NOSOTROS
+    </h2>
+
+    <LogosSlider clientes={clientes} />
+</section>
+
+
+<style>
+    .clients_section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    h2 {
+        color: #FFF;
+        text-align: center;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+        letter-spacing: 10.08px;
+        display: flex;
+        text-align: center;
+        margin-bottom: 5.2rem;
+        text-transform: uppercase;
+}
+
+
+@media screen and (max-width: 800px) {
+     h2 {
+            font-size: 32px;
+            margin-bottom: 3rem;
+        }
+    }
+
+</style>
