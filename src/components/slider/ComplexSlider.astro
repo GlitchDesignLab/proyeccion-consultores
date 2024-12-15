@@ -1,0 +1,204 @@
+---
+
+import ComplexSliderCard from "../cards/ComplexSliderCard.astro";
+const { list } = Astro.props;
+
+---
+<section class="complex_slider_container">
+
+  <div class="wrapper">
+
+      <button id="left">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="31" viewBox="0 0 18 31" fill="none">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M1.501 14.2064L14.7007 0.770998L18 4.12925L6.45 15.8855L18 27.6417L14.7007 31L1.501 17.5646C1.06357 17.1192 0.817831 16.5153 0.817831 15.8855C0.817831 15.2557 1.06357 14.6518 1.501 14.2064Z"
+                  fill="white" />
+          </svg>
+      </button>
+
+      <ul class="complex_carousel">
+
+        {
+          list.map(({ title, image, description }:{title: string,  image: any, description: string}) => (
+              <ComplexSliderCard title={title} image={image} description={description} />
+          ))
+        }
+
+      </ul>
+
+      <button id="right">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="31" viewBox="0 0 18 31" fill="none">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M16.499 16.7936L3.29933 30.229L0 26.8708L11.55 15.1145L0 3.35825L3.29933 0L16.499 13.4354C16.9364 13.8808 17.1822 14.4847 17.1822 15.1145C17.1822 15.7443 16.9364 16.3482 16.499 16.7936Z"
+                  fill="white" />
+          </svg>
+      </button>
+  </div>
+
+
+</section>
+
+<script>
+const wrapper = document.querySelector<HTMLElement>(".wrapper")!;
+const carousel = document.querySelector<HTMLUListElement>(".complex_carousel")!;
+const arrowBtns = document.querySelectorAll<HTMLButtonElement>(".wrapper button");
+let allCards: HTMLElement[] = Array.from(document.querySelectorAll<HTMLLIElement>(".complex_carousel .complex_card"));
+
+const firstCardWidth = carousel.querySelector<HTMLElement>(".complex_card")!.offsetWidth;
+const carouselChildren: HTMLElement[] = [...carousel.children] as HTMLElement[];
+
+let isDragging = false;
+let startX: number;
+let startScrollLeft: number;
+
+let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
+
+carouselChildren
+  .slice(-cardPerView)
+  .reverse()
+  .forEach((card) => {
+    carousel.insertAdjacentHTML("afterbegin", (card as HTMLElement).outerHTML);
+  });
+
+carouselChildren.slice(0, cardPerView).forEach((card) => {
+  carousel.insertAdjacentHTML("beforeend", (card as HTMLElement).outerHTML);
+});
+
+// Actualiza la lista de todas las tarjetas después de la clonación
+allCards = Array.from(document.querySelectorAll<HTMLLIElement>(".complex_carousel .complex_card"));
+
+console.log(allCards);
+allCards[4].classList.add("active"); // Establece el índice inicial de la clase "active"
+
+arrowBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    carousel.scrollLeft += btn.id === "left" ? -firstCardWidth : firstCardWidth;
+
+    const activeIndex = allCards.findIndex((card) =>
+      card.classList.contains("active")
+    );
+    console.log(activeIndex);
+
+    allCards[activeIndex].classList.remove("active");
+
+    let newIndex: number;
+    if (btn.id === "left") {
+      if (activeIndex === 2) {
+        newIndex = 7; // Pasa al índice 7 cuando la tarjeta activa está en el índice 2 y se presiona el botón "left"
+      } else {
+        newIndex = (activeIndex - 1 + allCards.length) % allCards.length;
+        if (newIndex < 2) newIndex = 10; // Salto al índice 10 si se intenta mover antes del índice 2
+      }
+    } else if (btn.id === "right") {
+      if (activeIndex === 9) {
+        newIndex = 4; // Pasa al índice 4 cuando la tarjeta activa está en el índice 9 y se presiona el botón "right"
+      } else {
+        newIndex = (activeIndex + 1) % allCards.length;
+        if (newIndex > 10) newIndex = 2; // Salto al índice 2 si se intenta mover más allá del índice 10
+      }
+    }
+
+    allCards[newIndex].classList.add("active");
+  });
+});
+
+const infiniteScroll = () => {
+  if (carousel.scrollLeft === 0) {
+    carousel.classList.add("no-transition");
+    carousel.scrollLeft = carousel.scrollWidth - 2 * carousel.offsetWidth;
+    carousel.classList.remove("no-transition");
+  } else if (
+    Math.ceil(carousel.scrollLeft) ===
+    carousel.scrollWidth - carousel.offsetWidth
+  ) {
+    carousel.classList.add("no-transition");
+    carousel.scrollLeft = carousel.offsetWidth;
+    carousel.classList.remove("no-transition");
+  }
+};
+
+carousel.addEventListener("scroll", infiniteScroll);
+
+
+</script>
+
+<style>
+  .wrapper {
+  max-width: 1100px;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+}
+ .wrapper .complex_carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% / 3) - 12px);
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding-left: 0px;
+  overflow-y: visible;
+  height: 700px;
+}
+.complex_carousel::-webkit-scrollbar {
+  display: none;
+}
+.complex_carousel.dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+.complex_carousel.no-transition {
+  scroll-behavior: auto;
+}
+
+
+.wrapper button {
+  width: 86px;
+  height: 82px;
+  flex-shrink: 0;
+  background: #008fc5;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 20%;
+  transform: translateY(-50%);
+}
+ .wrapper button:first-child {
+  left: -22px;
+}
+.wrapper button:last-child {
+  right: -22px;
+}
+
+@media screen and (max-width: 1190px) {
+.wrapper .carousel {
+    grid-auto-columns: calc((100% / 2) - 9px);
+  }
+ .wrapper {
+    max-width: 900px;
+  }
+}
+@media screen and (max-width: 1050px) {
+ .wrapper .carousel {
+    grid-auto-columns: calc((100% / 2) - 9px);
+  }
+   .wrapper {
+    max-width: 700px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .wrapper .carousel {
+    grid-auto-columns: 100%;
+  }
+
+  .wrapper {
+    max-width: 400px;
+  }
+}
+
+
+</style>

@@ -18,7 +18,7 @@ const { list } = Astro.props;
         <ul class="carousel">
             
             {
-                list.map(({ title, category, url, image, description,logo }) => (
+                list.map(({ title, category, url, image, description,logo }:{title: string, category: string, url: string, image: any, description: string, logo: any}) => (
                     <BasicSliderCard title={title} category={category} url={url} image={image} description={description} logo={logo}/>
                 ))
               }

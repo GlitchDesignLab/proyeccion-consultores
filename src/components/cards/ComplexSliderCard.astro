@@ -1,0 +1,89 @@
+---
+const { title, image, description } = Astro.props;
+
+
+// Verifica que los props estén llegando correctamente
+console.log({ title, image, description });
+---
+
+ <!-- card -->
+ <li class="complex_card">
+    <div class="complex_card_content" >
+        <h4>
+            {title}
+        </h4>
+        <p>
+            {description}
+        </p>
+    </div>
+</li>
+
+
+
+<style>
+ .complex_card {
+  scroll-snap-align: start;
+  list-style: none;
+  border-radius: 10px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 15px;
+  cursor: pointer;
+ background-color: red;
+  color: #fff;
+  border: 5px solid transparent;
+  margin-top: 10%;
+}
+
+.complex_card.active {
+  animation: resize 1s linear forwards;
+}
+
+@keyframes resize {
+  from {
+    scale: 1;
+    border: 5px solid transparent;
+  }
+  to {
+    scale: 1.1;
+    border: 5px solid #008fc5;
+  }
+}
+
+ .complex_card {
+  cursor: grab;
+  user-select: none;
+}
+</style>
+
+<script>
+//     document.addEventListener("DOMContentLoaded", () => {
+
+//     const elements = document.querySelectorAll<HTMLDivElement>('.limited_words');
+
+//     elements.forEach(element => {
+//         const words = element.innerText.split(' ');
+//         const maxWords = 20;  
+
+//         if (words.length > maxWords) {
+//             element.innerText = words.slice(0, maxWords).join(' ') + '...';
+//         }
+//     });
+
+
+//     const titles = document.querySelectorAll<HTMLDivElement>('.limited_title');
+
+//         titles.forEach(element => {
+//         const words = element.innerText.split(' ');
+//         const maxWords = 15;  
+
+//         if (words.length > maxWords) {
+//             element.innerText = words.slice(0, maxWords).join(' ') + '...';
+//         }
+//     });
+// });
+
+</script>
